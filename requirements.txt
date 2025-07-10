@@ -1,4 +1,3 @@
-
 fastapi
 uvicorn
 scikit-learn
@@ -6,3 +5,4 @@ xgboost
 pandas
 numpy
 pydantic
+prometheus-fastapi-instrumentator

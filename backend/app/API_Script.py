@@ -1,3 +1,4 @@
+# This is the main entrypoint for the FastAPI backend.
 from fastapi.middleware.cors import CORSMiddleware
 import pickle
 import pandas as pd
@@ -5,6 +6,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Any
 import numpy as np
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # Load the model and scaler
 with open('xgb_model.pkl', 'rb') as f:
@@ -25,6 +27,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Expose Prometheus metrics at /metrics
+Instrumentator().instrument(app).expose(app)
 
 # Define the expected input schema
 class HouseFeatures(BaseModel):
