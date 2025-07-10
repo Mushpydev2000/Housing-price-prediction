@@ -10,16 +10,36 @@
     <div class="container">
         <h1>Housing Price Prediction</h1>
         <form id="predict-form">
-            <label>Lot Area: <input type="number" step="any" name="LotArea" required></label>
-            <label>Gr Liv Area: <input type="number" step="any" name="GrLivArea" required></label>
-            <label>Overall Qual: <input type="number" name="OverallQual" required></label>
-            <label>Total Bsmt SF: <input type="number" step="any" name="TotalBsmtSF" required></label>
-            <label>Garage Cars: <input type="number" name="GarageCars" required></label>
-            <label>Year Built: <input type="number" name="YearBuilt" required></label>
-            <label>Year Remod Add: <input type="number" name="YearRemodAdd" required></label>
-            <label>House Style: <input type="text" name="HouseStyle" required></label>
-            <label>Sale Condition: <input type="text" name="SaleCondition" required></label>
-            <label>Neighborhood: <input type="text" name="Neighborhood" required></label>
+            <label>Select Feature 1:
+                <select id="feature1" required>
+                    <option value="LotArea">LotArea</option>
+                    <option value="GrLivArea">GrLivArea</option>
+                    <option value="OverallQual">OverallQual</option>
+                    <option value="TotalBsmtSF">TotalBsmtSF</option>
+                    <option value="GarageCars">GarageCars</option>
+                    <option value="YearBuilt">YearBuilt</option>
+                    <option value="YearRemodAdd">YearRemodAdd</option>
+                    <option value="HouseStyle">HouseStyle</option>
+                    <option value="SaleCondition">SaleCondition</option>
+                    <option value="Neighborhood">Neighborhood</option>
+                </select>
+            </label>
+            <label>Value 1: <input id="value1" type="text" required></label>
+            <label>Select Feature 2:
+                <select id="feature2" required>
+                    <option value="LotArea">LotArea</option>
+                    <option value="GrLivArea">GrLivArea</option>
+                    <option value="OverallQual">OverallQual</option>
+                    <option value="TotalBsmtSF">TotalBsmtSF</option>
+                    <option value="GarageCars">GarageCars</option>
+                    <option value="YearBuilt">YearBuilt</option>
+                    <option value="YearRemodAdd">YearRemodAdd</option>
+                    <option value="HouseStyle">HouseStyle</option>
+                    <option value="SaleCondition">SaleCondition</option>
+                    <option value="Neighborhood">Neighborhood</option>
+                </select>
+            </label>
+            <label>Value 2: <input id="value2" type="text" required></label>
             <button type="submit">Predict</button>
         </form>
         <div id="result"></div>

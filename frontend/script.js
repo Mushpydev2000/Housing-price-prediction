@@ -1,18 +1,27 @@
 document.getElementById('predict-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const form = e.target;
-    const data = {
-        LotArea: parseFloat(form.LotArea.value),
-        GrLivArea: parseFloat(form.GrLivArea.value),
-        OverallQual: parseInt(form.OverallQual.value),
-        TotalBsmtSF: parseFloat(form.TotalBsmtSF.value),
-        GarageCars: parseInt(form.GarageCars.value),
-        YearBuilt: parseInt(form.YearBuilt.value),
-        YearRemodAdd: parseInt(form.YearRemodAdd.value),
-        HouseStyle: form.HouseStyle.value,
-        SaleCondition: form.SaleCondition.value,
-        Neighborhood: form.Neighborhood.value
+    // All features with default values
+    let data = {
+        LotArea: 8000,
+        GrLivArea: 1500,
+        OverallQual: 5,
+        TotalBsmtSF: 800,
+        GarageCars: 1,
+        YearBuilt: 2000,
+        YearRemodAdd: 2000,
+        HouseStyle: "1Story",
+        SaleCondition: "Normal",
+        Neighborhood: "CollgCr"
     };
+    // Get selected features and values
+    const f1 = document.getElementById('feature1').value;
+    const v1 = document.getElementById('value1').value;
+    const f2 = document.getElementById('feature2').value;
+    const v2 = document.getElementById('value2').value;
+    // Set the selected features to user input (parse numbers if needed)
+    const numFeatures = ["LotArea","GrLivArea","OverallQual","TotalBsmtSF","GarageCars","YearBuilt","YearRemodAdd"];
+    data[f1] = numFeatures.includes(f1) ? Number(v1) : v1;
+    data[f2] = numFeatures.includes(f2) ? Number(v2) : v2;
     document.getElementById('result').textContent = 'Predicting...';
     try {
         const response = await fetch('http://localhost:8000/predict', {
