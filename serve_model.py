@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 import pickle
 import pandas as pd
 from fastapi import FastAPI, HTTPException
@@ -15,6 +16,15 @@ with open('encoder.pkl', 'rb') as f:
 
 # Define the FastAPI app
 app = FastAPI()
+
+# Enable CORS for all origins (for development)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or specify ["http://localhost:8080"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define the expected input schema
 class HouseFeatures(BaseModel):
