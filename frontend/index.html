@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Price Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Housing Price Prediction</h1>
+        <form id="predict-form">
+            <label>Lot Area: <input type="number" step="any" name="LotArea" required></label>
+            <label>Gr Liv Area: <input type="number" step="any" name="GrLivArea" required></label>
+            <label>Overall Qual: <input type="number" name="OverallQual" required></label>
+            <label>Total Bsmt SF: <input type="number" step="any" name="TotalBsmtSF" required></label>
+            <label>Garage Cars: <input type="number" name="GarageCars" required></label>
+            <label>Year Built: <input type="number" name="YearBuilt" required></label>
+            <label>Year Remod Add: <input type="number" name="YearRemodAdd" required></label>
+            <label>House Style: <input type="text" name="HouseStyle" required></label>
+            <label>Sale Condition: <input type="text" name="SaleCondition" required></label>
+            <label>Neighborhood: <input type="text" name="Neighborhood" required></label>
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

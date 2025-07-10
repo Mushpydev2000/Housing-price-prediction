@@ -1,9 +1,6 @@
 # Dockerfile for serving the trained model with FastAPI
-FROM python:3.11-slim-bullseye
-
-# Update system packages to reduce vulnerabilities
-RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
-
+FROM python:3.11-slim-bookworm
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Install dependencies
@@ -11,10 +8,14 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy model and code
-COPY serve_model.py ./
+COPY export_model.py ./
 COPY xgb_model.pkl ./
 COPY scaler.pkl ./
 COPY encoder.pkl ./
+COPY serve_model.py ./
+
+# Debug: List files in /app before running the server
+RUN ls -l /app
 
 EXPOSE 8000
 

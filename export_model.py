@@ -13,7 +13,7 @@ def feature_engineering(df):
     features = ['LotArea', 'GrLivArea', 'OverallQual', 'TotalBsmtSF', 'GarageCars', 'YearBuilt', 'YearRemodAdd']
     cat_features = ['HouseStyle', 'SaleCondition', 'Neighborhood']
     df_cat = df[cat_features].astype(str)
-    encoder = OneHotEncoder(sparse=False, drop='first')
+    encoder = OneHotEncoder(sparse_output=False, drop='first')
     df_cat_encoded = encoder.fit_transform(df_cat)
     cat_feature_names = encoder.get_feature_names_out(cat_features)
     df_cat_encoded = pd.DataFrame(df_cat_encoded, columns=cat_feature_names, index=df.index)
